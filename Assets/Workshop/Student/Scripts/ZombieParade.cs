@@ -61,7 +61,7 @@ namespace Solution
                 LinkedListNode<GameObject> fistNode = Parade.First;
                 GameObject fistPart = fistNode.Value;
                 // 2. ดึงส่วนสุดท้ายของงูออกมา
-                LinkedListNode<GameObject> lastNode = Parade.First;
+                LinkedListNode<GameObject> lastNode = Parade.Last;
                 GameObject lastPart = lastNode.Value;
                 // 3. ลบส่วนสุดท้ายออกจาก LinkedList
                 Parade.RemoveLast();
