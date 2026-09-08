@@ -61,8 +61,8 @@ namespace Solution
                 LinkedListNode<GameObject> fistNode = Parade.First;
                 GameObject fistPart = fistNode.Value;
                 // 2. ดึงส่วนสุดท้ายของงูออกมา
-                LinkedListNode<GameObject> listNode = Parade.First;
-                GameObject lastPart = listNode.Value;
+                LinkedListNode<GameObject> lastNode = Parade.First;
+                GameObject lastPart = lastNode.Value;
                 // 3. ลบส่วนสุดท้ายออกจาก LinkedList
                 Parade.RemoveLast();
                 // 5. กำหนดตำแหน่งและทิศทางของส่วนที่ถูกย้ายมาใหม่
@@ -77,12 +77,21 @@ namespace Solution
                 mapGenerator.mapdata[positionX,positionY] = null;
                 positionX = toX;
                 positionY = toY;
+                
+                bool isCollide = true;
+                while (true)
+                {
+                    moveDirection = RandomizeDirection();
+                    toX = (int)(fistPart.transform.position.x + moveDirection.x);
+                    toY = (int)(fistPart.transform.position.y + moveDirection.y);
+                    isCollide = IsCollision(toX, toY);
+                }
 
                 lastPart.transform.position = new Vector3(positionX,positionY,0);
-                mapGenerator.mapdata[positionX, positionY] = null;
+                mapGenerator.mapdata[positionX, positionY] = this;
                 // 7. เพิ่มส่วนนั้นกลับเข้าไปเป็นส่วนที่สองของ LinkedList
                 // (ซึ่งก็คือส่วนแรกของลำตัว)
-
+                Parade.AddFirst(lastNode);
                 // รอตามเวลาที่กำหนดก่อนการเคลื่อนที่ครั้งต่อไป
                 yield return new WaitForSeconds(moveInterval);
             }
@@ -90,7 +99,10 @@ namespace Solution
         private bool IsCollision(int x, int y)
         {
             // 4. ตรวจสอบสิ่งกีดขวาง
-            
+            if(HasPlacement(x,y))
+            {
+                return true;
+            }
             return false;
         }
         void Move(Vector2 direction,GameObject targetMove)
