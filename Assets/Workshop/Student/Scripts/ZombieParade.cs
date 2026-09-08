@@ -70,14 +70,6 @@ namespace Solution
                 int toX = 0;
                 int toY = 0;
 
-                moveDirection = RandomizeDirection();
-                toX = (int)(fistPart.transform.position.x + moveDirection.x);
-                toX = (int)(fistPart.transform.position.y + moveDirection.y);
-                //6. เคลื่อนที่
-                mapGenerator.mapdata[positionX,positionY] = null;
-                positionX = toX;
-                positionY = toY;
-
                 bool isCollide = true;
                 while (isCollide == true)
                 {
@@ -86,6 +78,11 @@ namespace Solution
                     toY = (int)(fistPart.transform.position.y + moveDirection.y);
                     isCollide = IsCollision(toX, toY);
                 }
+
+                //6. เคลื่อนที่
+                mapGenerator.mapdata[positionX,positionY] = null;
+                positionX = toX;
+                positionY = toY;
 
                 lastPart.transform.position = new Vector3(positionX, positionY, 0);
                 mapGenerator.mapdata[positionX, positionY] = this;
