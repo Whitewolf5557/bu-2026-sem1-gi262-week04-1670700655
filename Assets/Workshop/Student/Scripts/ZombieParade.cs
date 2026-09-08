@@ -77,9 +77,9 @@ namespace Solution
                 mapGenerator.mapdata[positionX,positionY] = null;
                 positionX = toX;
                 positionY = toY;
-                
+
                 bool isCollide = true;
-                while (true)
+                while (isCollide == true)
                 {
                     moveDirection = RandomizeDirection();
                     toX = (int)(fistPart.transform.position.x + moveDirection.x);
@@ -87,8 +87,9 @@ namespace Solution
                     isCollide = IsCollision(toX, toY);
                 }
 
-                lastPart.transform.position = new Vector3(positionX,positionY,0);
+                lastPart.transform.position = new Vector3(positionX, positionY, 0);
                 mapGenerator.mapdata[positionX, positionY] = this;
+
                 // 7. เพิ่มส่วนนั้นกลับเข้าไปเป็นส่วนที่สองของ LinkedList
                 // (ซึ่งก็คือส่วนแรกของลำตัว)
                 Parade.AddFirst(lastNode);
