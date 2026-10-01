@@ -7,8 +7,8 @@ namespace Assignment
     {
         public void Start()
         {
-            AS01_CountWords();
-            // AS02_CountNumber();
+            //AS01_CountWords();
+            AS02_CountNumber();
             // AS03_CheckValidBrackets();
             // AS04_PrintReverseLinkedList();
             // AS05_FindMiddleElement();
@@ -57,7 +57,27 @@ namespace Assignment
         public void AS02_CountNumber()
         {
             int[] numbers = as02Numbers;
-            throw new System.NotImplementedException();
+            
+            Dictionary<int, int> numberCount = new Dictionary<int, int>();
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                int number = numbers[i];
+
+                if (numberCount.ContainsKey(number))
+                {
+                    numberCount[number]++;
+                }
+                else
+                {
+                    numberCount.Add(number, 1);
+                }
+            }
+
+            foreach (int number in numberCount.Keys)
+            {
+                Debug.Log($"number: {number} count: {numberCount[number]}");
+            }
         }
 
         [Header("AS03 - Check Valid Brackets")]
