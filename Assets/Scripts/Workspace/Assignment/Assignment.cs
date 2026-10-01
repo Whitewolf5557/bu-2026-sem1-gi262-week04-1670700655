@@ -13,8 +13,8 @@ namespace Assignment
             //AS04_PrintReverseLinkedList();
             //AS05_FindMiddleElement();
             //AS06_MergeDictionaries();
-            AS07_RemoveDuplicatesFromLinkedList();
-            // AS08_TopFrequentNumber();
+            //AS07_RemoveDuplicatesFromLinkedList();
+            AS08_TopFrequentNumber();
             // AS09_PlayerInventory();
             // AS10_GameEventQueue();
             // AS11_PlayerStatsTracker();
@@ -242,7 +242,41 @@ namespace Assignment
         public void AS08_TopFrequentNumber()
         {
             int[] numbers = as08Numbers;
-            throw new System.NotImplementedException();
+            
+            if (numbers == null || numbers.Length == 0)
+            {
+                Debug.Log("Input array is empty");
+                return;
+            }
+
+            Dictionary<int, int> frequency = new Dictionary<int, int>();
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (frequency.ContainsKey(numbers[i]))
+                {
+                    frequency[numbers[i]]++;
+                }
+                else
+                {
+                    frequency.Add(numbers[i], 1);
+                }
+            }
+
+            int topNumber = numbers[0];
+            int maxCount = frequency[topNumber];
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                int number = numbers[i];
+
+                if (frequency[number] > maxCount)
+                {
+                    topNumber = number;
+                    maxCount = frequency[number];
+                }
+            }
+
+            Debug.Log($"{topNumber} count: {maxCount}");
         }
 
         [Header("AS09 - Player Inventory")]
