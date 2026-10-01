@@ -394,7 +394,10 @@ MonoBehaviour:
   as04List:
     values: 0100000002000000030000000400000005000000
   as05List:
-    values: []
+    values:
+    - A
+    - B
+    - C
   as06FirstDictionary:
     entries: []
   as06SecondDictionary:
