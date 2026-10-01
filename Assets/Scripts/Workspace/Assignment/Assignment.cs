@@ -9,8 +9,8 @@ namespace Assignment
         {
             //AS01_CountWords();
             //AS02_CountNumber();
-            AS03_CheckValidBrackets();
-            // AS04_PrintReverseLinkedList();
+            //AS03_CheckValidBrackets();
+            AS04_PrintReverseLinkedList();
             // AS05_FindMiddleElement();
             // AS06_MergeDictionaries();
             // AS07_RemoveDuplicatesFromLinkedList();
@@ -138,7 +138,20 @@ namespace Assignment
         public void AS04_PrintReverseLinkedList()
         {
             LinkedList<int> list = as04List.GetLinkedList();
-            throw new System.NotImplementedException();
+            
+            if (list.Count == 0)
+            {
+                Debug.Log("List is empty");
+                return;
+            }
+
+            LinkedListNode<int> current = list.Last;
+
+            while (current != null)
+            {
+                Debug.Log(current.Value);
+                current = current.Previous;
+            }
         }
 
         [Header("AS05 - Find Middle Element")]

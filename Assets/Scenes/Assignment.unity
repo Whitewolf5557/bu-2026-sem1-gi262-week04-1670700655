@@ -392,7 +392,7 @@ MonoBehaviour:
   as02Numbers: 01000000020000000300000002000000010000000300000001000000
   as03Input: )
   as04List:
-    values: 
+    values: 0100000002000000030000000400000005000000
   as05List:
     values: []
   as06FirstDictionary:
