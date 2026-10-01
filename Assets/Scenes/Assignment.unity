@@ -411,7 +411,7 @@ MonoBehaviour:
     - key: cherry
       value: 4
   as07List:
-    values: 
+    values: 01000000020000000200000003000000030000000300000004000000
   as08Numbers: 
   as09Inventory:
     entries: []

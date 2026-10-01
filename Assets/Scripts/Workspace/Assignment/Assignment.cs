@@ -12,8 +12,8 @@ namespace Assignment
             //AS03_CheckValidBrackets();
             //AS04_PrintReverseLinkedList();
             //AS05_FindMiddleElement();
-            AS06_MergeDictionaries();
-            // AS07_RemoveDuplicatesFromLinkedList();
+            //AS06_MergeDictionaries();
+            AS07_RemoveDuplicatesFromLinkedList();
             // AS08_TopFrequentNumber();
             // AS09_PlayerInventory();
             // AS10_GameEventQueue();
@@ -213,7 +213,27 @@ namespace Assignment
         public void AS07_RemoveDuplicatesFromLinkedList()
         {
             LinkedList<int> list = as07List.GetLinkedList();
-            throw new System.NotImplementedException();
+            Dictionary<int, bool> seen = new Dictionary<int, bool>();
+            LinkedListNode<int> current = list.First;
+            
+            while (current != null)
+            {
+                LinkedListNode<int> next = current.Next;
+                if (seen.ContainsKey(current.Value))
+                {
+                    list.Remove(current);
+                }
+                else
+                {
+                    seen.Add(current.Value, true);
+                }
+                current = next;
+            }
+
+            foreach (int number in list)
+            {
+                Debug.Log(number);
+            }
         }
 
         [Header("AS08 - Top Frequent Number")]
