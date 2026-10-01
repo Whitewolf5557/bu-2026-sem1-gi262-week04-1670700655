@@ -14,8 +14,8 @@ namespace Assignment
             //AS05_FindMiddleElement();
             //AS06_MergeDictionaries();
             //AS07_RemoveDuplicatesFromLinkedList();
-            AS08_TopFrequentNumber();
-            // AS09_PlayerInventory();
+            //AS08_TopFrequentNumber();
+            AS09_PlayerInventory();
             // AS10_GameEventQueue();
             // AS11_PlayerStatsTracker();
         }
@@ -289,7 +289,20 @@ namespace Assignment
             Dictionary<string, int> inventory = as09Inventory.GetDictionary();
             string itemName = as09ItemName;
             int quantity = as09Quantity;
-            throw new System.NotImplementedException();
+            
+            if (inventory.ContainsKey(itemName))
+            {
+                inventory[itemName] += quantity;
+            }
+            else
+            {
+                inventory.Add(itemName, quantity);
+            }
+            
+            foreach (KeyValuePair<string, int> item in inventory)
+            {
+                Debug.Log($"{item.Key}: {item.Value}");
+            }
         }
 
         [Header("AS10 - Game Event Queue")]
