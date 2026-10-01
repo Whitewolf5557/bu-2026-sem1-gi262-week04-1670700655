@@ -11,8 +11,8 @@ namespace Assignment
             //AS02_CountNumber();
             //AS03_CheckValidBrackets();
             //AS04_PrintReverseLinkedList();
-            AS05_FindMiddleElement();
-            // AS06_MergeDictionaries();
+            //AS05_FindMiddleElement();
+            AS06_MergeDictionaries();
             // AS07_RemoveDuplicatesFromLinkedList();
             // AS08_TopFrequentNumber();
             // AS09_PlayerInventory();
@@ -187,7 +187,24 @@ namespace Assignment
         {
             Dictionary<string, int> dict1 = as06FirstDictionary.GetDictionary();
             Dictionary<string, int> dict2 = as06SecondDictionary.GetDictionary();
-            throw new System.NotImplementedException();
+            
+            Dictionary<string, int> mergedDictionary = new Dictionary<string, int>(dict1);
+            foreach (KeyValuePair<string, int> pair in dict2)
+            {
+                if (mergedDictionary.ContainsKey(pair.Key))
+                {
+                    mergedDictionary[pair.Key] += pair.Value;
+                }
+                else
+                {
+                    mergedDictionary.Add(pair.Key, pair.Value);
+                }
+            }
+
+            foreach (KeyValuePair<string, int> pair in mergedDictionary)
+            {
+                Debug.Log($"key: {pair.Key}, value: {pair.Value}");
+            }
         }
 
         [Header("AS07 - Remove Duplicates From Linked List")]
